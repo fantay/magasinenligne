@@ -28,39 +28,37 @@ public class Commande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     /*
         enumeration du statut de la commande
-    */
-    public enum StatutCommande{
+     */
+    public enum StatutCommande {
         En_Cours, Terminer, Payer, Livrer
     }
-    
+
     /*
         variables
-    */
+     */
     private String moyenDePaiment;
     private Integer prixTotal;
     private String modeDeLivraison;
     private Integer fraisDePort;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateEtHeureCommande;
-    
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateLivraison;
-    
-    
+
     @Embedded
     private Adresse adresseLivraison;
-    
+
     @Enumerated(EnumType.STRING)
     private StatutCommande statutCommande;
-    
+
     /*
         getter & setter
-    */
-
+     */
     public Long getId() {
         return id;
     }
@@ -93,5 +91,5 @@ public class Commande implements Serializable {
     public String toString() {
         return "magasinenligne.entity.Commande[ id=" + id + " ]";
     }
-    
+
 }
