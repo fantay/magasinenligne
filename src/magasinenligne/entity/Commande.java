@@ -63,9 +63,82 @@ public class Commande implements Serializable {
     @ManyToOne
     private Client client;
 
+    
+    public String getMoyenDePaiment() {
+        return moyenDePaiment;
+    }
+
+    public void setMoyenDePaiment(String moyenDePaiment) {
+        this.moyenDePaiment = moyenDePaiment;
+    }
+
+    public Integer getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(Integer prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    public String getModeDeLivraison() {
+        return modeDeLivraison;
+    }
+
+    public void setModeDeLivraison(String modeDeLivraison) {
+        this.modeDeLivraison = modeDeLivraison;
+    }
+
+    public Integer getFraisDePort() {
+        return fraisDePort;
+    }
+
+    public void setFraisDePort(Integer fraisDePort) {
+        this.fraisDePort = fraisDePort;
+    }
+
+    public Date getDateEtHeureCommande() {
+        return dateEtHeureCommande;
+    }
+
+    public void setDateEtHeureCommande(Date dateEtHeureCommande) {
+        this.dateEtHeureCommande = dateEtHeureCommande;
+    }
+
+    public Date getDateLivraison() {
+        return dateLivraison;
+    }
+
+    public void setDateLivraison(Date dateLivraison) {
+        this.dateLivraison = dateLivraison;
+    }
+
+    public Adresse getAdresseLivraison() {
+        return adresseLivraison;
+    }
+
+    public void setAdresseLivraison(Adresse adresseLivraison) {
+        this.adresseLivraison = adresseLivraison;
+    }
+
+    public StatutCommande getStatutCommande() {
+        return statutCommande;
+    }
+
+    public void setStatutCommande(StatutCommande statutCommande) {
+        this.statutCommande = statutCommande;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
     /*
-        getter & setter
+    getter & setter
      */
+    public void setClient(Client client) {    
+        this.client = client;
+    }
+
     public Long getId() {
         return id;
     }

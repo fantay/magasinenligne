@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -34,11 +35,54 @@ public class Client implements Serializable {
     @Embedded
     private Adresse adresse;
 
+    // definition de la jointure produit.categorie
+    @OneToMany(mappedBy = "client") // mappedBy appel le proprietaire de la relation
+    private Commande commande;
+
     
-    
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    public Adresse getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
+    }
+
+    public Commande getCommande() {
+        return commande;
+    }
+
     /*
-        getter & setter
+    getter & setter
      */
+    public void setCommande(Commande commande) {    
+        this.commande = commande;
+    }
+
     public Long getId() {
         return id;
     }
