@@ -19,6 +19,19 @@ import static org.junit.Assert.*;
 public class TestMagasin {
 
     @Test
+    public void testListeProdCategorie(){
+        
+    EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+    
+    Categorie cat = em.find(Categorie.class, 2L);
+        for (Produit p : cat.getProduits()) {
+            
+            System.out.println(p);
+        }
+        
+}
+    
+   // @Test
     public void test() {
 
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();

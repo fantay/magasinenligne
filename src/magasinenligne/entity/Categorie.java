@@ -5,11 +5,14 @@
  */
 package magasinenligne.entity;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,8 +25,23 @@ public class Categorie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String nom;
+
+    // definition de la jointure produit.categorie
+    @OneToMany(mappedBy = "categorie") // mappedBy appel le proprietaire de la relation
+    private List<Produit> produits = new VirtualFlow.ArrayLinkedList<>();
+
+    /*
+        getter & setter
+    */
+    public List<Produit> getProduits() {
+        return produits;
+    }
+
+    public void setProduits(List<Produit> produits) {
+        this.produits = produits;
+    }
 
     public String getNom() {
         return nom;
@@ -33,7 +51,6 @@ public class Categorie implements Serializable {
         this.nom = nom;
     }
 
-    
     public Long getId() {
         return id;
     }
@@ -66,5 +83,5 @@ public class Categorie implements Serializable {
     public String toString() {
         return "magasinenligne.entity.Categorie[ id=" + id + " ]";
     }
-    
+
 }
