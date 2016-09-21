@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,15 +24,59 @@ public class Produit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     /*
         variables
-    */
-    
+     */
     private String titre;
     private String description;
     private String prix;
     private Integer stock;
+
+    // ajout de la cle etrangere de la table categorie avec la relation
+    @JoinColumn(name = "id_categorie")
+    @ManyToOne
+    private Categorie categorie;
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPrix() {
+        return prix;
+    }
+
+    public void setPrix(String prix) {
+        this.prix = prix;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
 
     public Long getId() {
         return id;
@@ -64,5 +110,5 @@ public class Produit implements Serializable {
     public String toString() {
         return "magasinenligne.entity.Produit[ id=" + id + " ]";
     }
-    
+
 }
