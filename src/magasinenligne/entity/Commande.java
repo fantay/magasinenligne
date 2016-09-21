@@ -6,6 +6,7 @@
 package magasinenligne.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,6 +14,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -40,8 +43,13 @@ public class Commande implements Serializable {
     private Integer prixTotal;
     private String modeDeLivraison;
     private Integer fraisDePort;
-    private String dateEtHeureCommande;
-    private String dateLivraison;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateEtHeureCommande;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateLivraison;
+    
     
     @Embedded
     private Adresse adresseLivraison;
