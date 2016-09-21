@@ -14,6 +14,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -55,6 +57,11 @@ public class Commande implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private StatutCommande statutCommande;
+    
+    // ajout de la cle etrangere de la table categorie avec la relation
+    @JoinColumn(name = "id_client")
+    @ManyToOne
+    private Client client;
 
     /*
         getter & setter
