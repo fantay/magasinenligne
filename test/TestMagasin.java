@@ -39,6 +39,7 @@ public class TestMagasin {
         em.persist(c2);
 
         Produit rayban = new Produit();
+        rayban.setTitre("ray-Ban");
         rayban.setCategorie(c2);
         em.persist(rayban);
 
