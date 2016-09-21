@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  *
  * @author Laurent-LIM
  */
-public class MagasinEnLgneTest {
+public class TestMagasin {
 
     @Test
     public void test() {
