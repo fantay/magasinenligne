@@ -32,10 +32,11 @@ public class TestMagasin {
         Query query = em.createQuery("DELETE FROM Produit p");
         query.executeUpdate();
 
-        //methode 2
+        //methode 2, la plus utiliser car plus simple d'ecriture
         em.createQuery("DELETE FROM Categorie p").executeUpdate();
-        em.createQuery("DELETE FROM Client p").executeUpdate();
         em.createQuery("DELETE FROM Commande p").executeUpdate();
+        em.createQuery("DELETE FROM Client p").executeUpdate();
+
 
         /*  ajoute des données en spécifiant les ID que 
             l'on va utliser dans les test unitaires */
