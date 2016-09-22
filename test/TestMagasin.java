@@ -110,16 +110,28 @@ public class TestMagasin {
     ############################ TEST ################################## 
     ####################################################################
      */
-    
     @Test
-    public void verifQueNbrComdLoulouEst2() {
-        
+    public void verifQueCmd3PasserLoulou() {
+
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        
+
+        //recup loulou
+        Commande comd3 = em.find(Commande.class, 3L);
+
+        Assert.assertEquals("LOULOU", comd3.getClient().getLogin());
+
+    }
+
+    // @Test
+    public void verifQueNbrComdLoulouEst2() {
+
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+
         Client c = em.find(Client.class, 3L);
-        if(c.getCommandes().size()!=2)
+        if (c.getCommandes().size() != 2) {
             Assert.fail("test" + c.getCommandes().size());
-        
+        }
+
     }
 
     // @Test
