@@ -111,6 +111,15 @@ public class TestMagasin {
     ####################################################################
      */
     @Test
+    public void verifComd2EstPasserParRiriKO() {
+
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+
+        Commande comd2 = em.find(Commande.class, 2L);
+        Assert.assertNotEquals("RIRI", comd2.getClient().getLogin());
+    }
+
+    //@Test
     public void verifQueCmd3PasserLoulou() {
 
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
