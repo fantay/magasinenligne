@@ -6,7 +6,9 @@
 package magasinenligne.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,6 +17,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -57,12 +61,20 @@ public class Commande implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private StatutCommande statutCommande;
-    
+
     // ajout de la cle etrangere de la table client avec la relation
     @JoinColumn(name = "id_client")
     @ManyToOne
     private Client client;
+    
+    // ajout de la relation avec produit
+    @ManyToMany
+    @JoinTable(name = "commande_produit")   // la jonction se fait par une table intermédiaire
+    private List<Produit> produits = new ArrayList<>();
+    
+    
 
+    /*  getter & setter     */
     
     public String getMoyenDePaiment() {
         return moyenDePaiment;
@@ -135,7 +147,7 @@ public class Commande implements Serializable {
     /*
     getter & setter
      */
-    public void setClient(Client client) {    
+    public void setClient(Client client) {
         this.client = client;
     }
 
