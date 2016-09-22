@@ -56,6 +56,7 @@ public class TestMagasin {
         rayban.setId(1L);
         rayban.setTitre("ray-Ban");
         rayban.setCategorie(c2);
+        c2.getProduits().add(rayban);
         em.persist(rayban);
 
         /*  Ajout de clients    */
@@ -79,18 +80,21 @@ public class TestMagasin {
         com1.setId(1L);
         com1.setClient(cl1);
         com1.setPrixTotal(1000);
+        cl1.getCommandes().add(com1);
         em.persist(com1);
 
         Commande com2 = new Commande();
         com2.setId(2L);
         com2.setClient(cl3);
         com2.setPrixTotal(5);
+        cl3.getCommandes().add(com2);
         em.persist(com2);
 
         Commande com3 = new Commande();
         com3.setId(3L);
         com3.setClient(cl3);
         com3.setPrixTotal(2);
+        cl3.getCommandes().add(com3);
         em.persist(com3);
 
         //permet d'envoyer la transaction a la base
@@ -103,7 +107,13 @@ public class TestMagasin {
     ############################ TEST ################################## 
     ####################################################################
      */
+    @Test
+    public void verifQueNbrComdLoulouEst2() {
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        
 
+
+    }
 
     // @Test
     public void verifieQueCatID1EstBasket() {
@@ -116,7 +126,6 @@ public class TestMagasin {
             Assert.fail("CA MARCHE PAS");
         }
     }
-
 
     //@Test
     public void testListeProdCategorie() {
