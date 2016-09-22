@@ -5,8 +5,8 @@
  */
 package magasinenligne.entity;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +30,7 @@ public class Categorie implements Serializable {
 
     // definition de la jointure produit.categorie
     @OneToMany(mappedBy = "categorie") // mappedBy appel le proprietaire de la relation
-    private List<Produit> produits = new VirtualFlow.ArrayLinkedList<>();
+    private List<Produit> produits = new ArrayList<>();
 
     /*
         getter & setter

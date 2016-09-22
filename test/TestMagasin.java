@@ -37,7 +37,8 @@ public class TestMagasin {
         em.createQuery("DELETE FROM Commande p").executeUpdate();
         em.createQuery("DELETE FROM Client p").executeUpdate();
 
-
+        em.getTransaction().commit();
+        em.getTransaction().begin();
         /*  ajoute des données en spécifiant les ID que 
             l'on va utliser dans les test unitaires */
         //ajout d'unr categorie
@@ -80,22 +81,23 @@ public class TestMagasin {
         Commande com1 = new Commande();
         com1.setId(1L);
         com1.setClient(cl1);
-        com1.setPrixTotal(1000);
         cl1.getCommandes().add(com1);
+        com1.setPrixTotal(1000);
+
         em.persist(com1);
 
         Commande com2 = new Commande();
         com2.setId(2L);
         com2.setClient(cl3);
-        com2.setPrixTotal(5);
         cl3.getCommandes().add(com2);
+        com2.setPrixTotal(5);
         em.persist(com2);
 
         Commande com3 = new Commande();
         com3.setId(3L);
         com3.setClient(cl3);
-        com3.setPrixTotal(2);
         cl3.getCommandes().add(com3);
+        com3.setPrixTotal(2);
         em.persist(com3);
 
         //permet d'envoyer la transaction a la base
@@ -108,12 +110,16 @@ public class TestMagasin {
     ############################ TEST ################################## 
     ####################################################################
      */
+    
     @Test
     public void verifQueNbrComdLoulouEst2() {
+        
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
-
-
+        Client c = em.find(Client.class, 3L);
+        if(c.getCommandes().size()!=2)
+            Assert.fail("test" + c.getCommandes().size());
+        
     }
 
     // @Test
