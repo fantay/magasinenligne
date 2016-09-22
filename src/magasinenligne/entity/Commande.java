@@ -58,7 +58,7 @@ public class Commande implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatutCommande statutCommande;
     
-    // ajout de la cle etrangere de la table categorie avec la relation
+    // ajout de la cle etrangere de la table client avec la relation
     @JoinColumn(name = "id_client")
     @ManyToOne
     private Client client;

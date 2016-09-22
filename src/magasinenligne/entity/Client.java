@@ -5,7 +5,10 @@
  */
 package magasinenligne.entity;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,11 +38,17 @@ public class Client implements Serializable {
     @Embedded
     private Adresse adresse;
 
-    // definition de la jointure produit.categorie
-    @OneToMany(mappedBy = "client") // mappedBy appel le proprietaire de la relation
-    private Commande commande;
+    @OneToMany(mappedBy = "client")
+    private List<Commande> commandes = new ArrayList<>();
 
-    
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -72,16 +81,6 @@ public class Client implements Serializable {
         this.adresse = adresse;
     }
 
-    public Commande getCommande() {
-        return commande;
-    }
-
-    /*
-    getter & setter
-     */
-    public void setCommande(Commande commande) {    
-        this.commande = commande;
-    }
 
     public Long getId() {
         return id;

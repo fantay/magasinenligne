@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import magasinenligne.entity.Categorie;
+import magasinenligne.entity.Client;
 import magasinenligne.entity.Produit;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,19 +20,39 @@ import static org.junit.Assert.*;
 public class TestMagasin {
 
     @Test
-    public void testListeProdCategorie(){
-        
-    EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-    
-    Categorie cat = em.find(Categorie.class, 2L);
+    public void testAjoutClient() {
+
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+
+        em.getTransaction().begin();
+
+        //ajout de client
+        Client c1 = new Client();
+        c1.setLogin("toto");
+        em.persist(c1);
+
+        Client c2 = new Client();
+        c2.setLogin("tata");
+        em.persist(c2);
+
+        em.getTransaction().commit();
+
+    }
+
+    //@Test
+    public void testListeProdCategorie() {
+
+        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+
+        Categorie cat = em.find(Categorie.class, 2L);
         for (Produit p : cat.getProduits()) {
-            
+
             System.out.println(p);
         }
-        
-}
-    
-   // @Test
+
+    }
+
+    // @Test
     public void test() {
 
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
